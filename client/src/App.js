@@ -1,28 +1,44 @@
 import React from "react";
-import Nav from "./components/Nav";
-import "./App.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import "./style.css"
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#24a2d0",
-      contrastText: '#33312e',
+import Nav from "./components/Nav";
+
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
     },
-    secondary: {
-      main: "#33312e",
-      contrastText: '#fef9ff',
-    },
-  },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Nav />
-      </div>
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Nav />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 

@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+nav {
+  display: flex;
+  flex: 1 0;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: flex-end;
+}
