@@ -21,7 +21,6 @@ import MenuItem from "@mui/material/MenuItem";
 import LoginModal from "../LoginModal";
 
 const pages = ["About Us", "Services", "Gallery", "Contact"];
-const settings = ["Dashboard", "Logout"];
 
 const Nav = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -74,11 +73,14 @@ const Nav = () => {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}>
-            {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{setting}</Typography>
-              </MenuItem>
-            ))}
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography textAlign="center">Dashboard</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography href="/" onClick={() => Auth.logout()}>
+                Logout
+              </Typography>
+            </MenuItem>
           </Menu>
         </>
       );
