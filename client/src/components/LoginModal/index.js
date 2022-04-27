@@ -83,13 +83,15 @@ function LoginModal(props) {
           onChange={handleChange}
         />
         {error ? (
-          <DialogContentText>
+          <DialogContentText color="error">
             The provided credentials are incorrect
           </DialogContentText>
         ) : null}
       </DialogContent>
       <DialogActions>
-        <Button type="submit" onClick={handleFormSubmit}>Submit</Button>
+        <Button type="submit" onClick={handleFormSubmit}>
+          Submit
+        </Button>
       </DialogActions>
     </Dialog>
   );
