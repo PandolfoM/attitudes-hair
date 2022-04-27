@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import {
   Button,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  FormControlLabel,
+  FormGroup,
   IconButton,
   TextField,
 } from "@mui/material";
@@ -16,8 +19,16 @@ import CloseIcon from "@mui/icons-material/Close";
 
 function LoginModal(props) {
   const { openLogin, setOpenLogin } = props;
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+    checked: false,
+  });
   const [login, { error }] = useMutation(LOGIN);
+
+  useEffect(() => {
+    console.log(formState);
+  }, [formState]);
 
   const handleClose = () => {
     setOpenLogin(false);
@@ -27,7 +38,7 @@ function LoginModal(props) {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: { email: formState.email, password: formState.password, remember:  formState.checked},
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
@@ -37,10 +48,11 @@ function LoginModal(props) {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     setFormState({
       ...formState,
       [name]: value,
+      checked,
     });
   };
 
@@ -71,7 +83,8 @@ function LoginModal(props) {
           fullWidth
           onChange={handleChange}
         />
-        <br />
+      </DialogContent>
+      <DialogContent sx={{ paddingTop: "0px", paddingBottom: "0px" }}>
         <TextField
           autoFocus
           margin="dense"
@@ -82,11 +95,19 @@ function LoginModal(props) {
           fullWidth
           onChange={handleChange}
         />
+      </DialogContent>
+      <DialogContent sx={{ paddingTop: "0px" }}>
         {error ? (
           <DialogContentText color="error">
             The provided credentials are incorrect
           </DialogContentText>
         ) : null}
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox checked={formState.checked} name="checked" onChange={handleChange} />}
+            label="Remember me"
+          />
+        </FormGroup>
       </DialogContent>
       <DialogActions>
         <Button type="submit" onClick={handleFormSubmit}>

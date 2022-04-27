@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const secret = "testsecret";
-const expiration = "2h";
+const expiration = "1m";
 
 module.exports = {
   authMiddleware: function ({ req }) {
