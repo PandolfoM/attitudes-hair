@@ -6,14 +6,13 @@ function About() {
   const theme = useTheme();
 
   return (
-    <Box sx={{ textAlign: "center", marginTop: "20px" }}>
+    <Box sx={{ textAlign: "center", marginTop: "50px" }}>
       <Container>
         <header>
           <Typography variant="h4">About Us</Typography>
           <hr
             style={{
               width: "5rem",
-              marginTop: 0,
               border: "solid 1px",
               borderColor: theme.palette.primary.main,
             }}

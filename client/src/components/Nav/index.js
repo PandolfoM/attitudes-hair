@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { firstLetter } from "../../utils/helpers";
-import "./style.css";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -25,6 +24,7 @@ const Nav = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [openLogin, setOpenLogin] = useState(false);
   const { loading, data: userData } = useQuery(QUERY_ME);
+  const titleRef = useRef(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -35,6 +35,8 @@ const Nav = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    console.log(titleRef.current);
+    titleRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleCloseUserMenu = () => {
@@ -89,6 +91,7 @@ const Nav = () => {
     if (!Auth.loggedIn()) {
       return (
         <Button
+          color="inherit"
           onClick={() => setOpenLogin(true)}
           sx={{ my: 2, display: "block" }}>
           Login
@@ -99,7 +102,7 @@ const Nav = () => {
 
   return (
     <>
-      <AppBar position="fixed" color="nav">
+      <AppBar position="fixed" color="nav" sx={{paddingRight: "0px"}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -183,7 +186,8 @@ const Nav = () => {
               <Button
                 color="inherit"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}>
+                sx={{ my: 2, display: "block" }}
+                ref={titleRef}>
                 Services
               </Button>
               <Button
@@ -206,9 +210,7 @@ const Nav = () => {
         </Container>
       </AppBar>
 
-      <LoginModal
-        openLogin={openLogin}
-        setOpenLogin={setOpenLogin}></LoginModal>
+      <LoginModal openLogin={openLogin} setOpenLogin={setOpenLogin} />
     </>
   );
 };
