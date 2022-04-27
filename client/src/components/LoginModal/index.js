@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import {
   Button,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  FormControlLabel,
-  FormGroup,
   IconButton,
   TextField,
 } from "@mui/material";
@@ -22,13 +19,8 @@ function LoginModal(props) {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
-    checked: false,
   });
   const [login, { error }] = useMutation(LOGIN);
-
-  useEffect(() => {
-    console.log(formState);
-  }, [formState]);
 
   const handleClose = () => {
     setOpenLogin(false);
@@ -38,7 +30,7 @@ function LoginModal(props) {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password, remember:  formState.checked},
+        variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
@@ -48,11 +40,10 @@ function LoginModal(props) {
   };
 
   const handleChange = (event) => {
-    const { name, value, checked } = event.target;
+    const { name, value } = event.target;
     setFormState({
       ...formState,
       [name]: value,
-      checked,
     });
   };
 
@@ -102,12 +93,6 @@ function LoginModal(props) {
             The provided credentials are incorrect
           </DialogContentText>
         ) : null}
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={formState.checked} name="checked" onChange={handleChange} />}
-            label="Remember me"
-          />
-        </FormGroup>
       </DialogContent>
       <DialogActions>
         <Button type="submit" onClick={handleFormSubmit}>

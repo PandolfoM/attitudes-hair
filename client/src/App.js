@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,8 +7,9 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import "./style.css"
+import "./style.css";
 
+import Home from "./pages/Home";
 import Nav from "./components/Nav";
 
 const httpLink = createHttpLink({
@@ -36,6 +37,9 @@ function App() {
       <Router>
         <div>
           <Nav />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+          </Routes>
         </div>
       </Router>
     </ApolloProvider>

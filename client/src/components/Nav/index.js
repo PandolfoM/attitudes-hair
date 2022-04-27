@@ -3,7 +3,6 @@ import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { firstLetter } from "../../utils/helpers";
-import spinner from "../../assets/spinner.gif";
 import "./style.css";
 
 import AppBar from "@mui/material/AppBar";
@@ -19,6 +18,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import LoginModal from "../LoginModal";
+import { CircularProgress } from "@mui/material";
 
 const pages = ["About Us", "Services", "Gallery", "Contact"];
 
@@ -50,7 +50,7 @@ const Nav = () => {
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               {loading ? (
-                <Avatar src={spinner} />
+                <CircularProgress />
               ) : (
                 <Avatar alt="Matthew Pandolfo">
                   {firstLetter(userData.me.firstName)}
@@ -101,7 +101,7 @@ const Nav = () => {
 
   return (
     <>
-      <AppBar position="static" color="primary">
+      <AppBar position="fixed" color="primary">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
