@@ -20,8 +20,6 @@ import MenuItem from "@mui/material/MenuItem";
 import LoginModal from "../LoginModal";
 import { CircularProgress } from "@mui/material";
 
-const pages = ["About Us", "Services", "Gallery", "Contact"];
-
 const Nav = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -92,7 +90,7 @@ const Nav = () => {
       return (
         <Button
           onClick={() => setOpenLogin(true)}
-          sx={{ my: 2, color: "white", display: "block" }}>
+          sx={{ my: 2, display: "block" }}>
           Login
         </Button>
       );
@@ -101,7 +99,7 @@ const Nav = () => {
 
   return (
     <>
-      <AppBar position="fixed" color="primary">
+      <AppBar position="fixed" color="nav">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -111,7 +109,6 @@ const Nav = () => {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                color: "#fef9ff",
               }}>
               Attitudes Design
             </Typography>
@@ -136,8 +133,7 @@ const Nav = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit">
+                onClick={handleOpenNavMenu}>
                 <MenuIcon />
               </IconButton>
               <Menu
@@ -157,11 +153,18 @@ const Nav = () => {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}>
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">About Us</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Services</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Gallery</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Contact</Typography>
+                </MenuItem>
               </Menu>
             </Box>
             <Box
@@ -171,14 +174,30 @@ const Nav = () => {
                 justifyContent: "flex-end",
                 marginRight: "10px",
               }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}>
-                  {page}
-                </Button>
-              ))}
+              <Button
+                color="inherit"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, display: "block" }}>
+                About Us
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, display: "block" }}>
+                Services
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, display: "block" }}>
+                Gallery
+              </Button>
+              <Button
+                color="inherit"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, display: "block" }}>
+                Contact
+              </Button>
               {showLogin()}
             </Box>
 
