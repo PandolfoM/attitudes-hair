@@ -42,7 +42,6 @@ function LoginModal(props) {
       ...formState,
       [name]: value,
     });
-    console.log(formState);
   };
 
   return (
@@ -67,6 +66,7 @@ function LoginModal(props) {
           margin="dense"
           label="Email Address"
           type="email"
+          name="email"
           variant="standard"
           fullWidth
           onChange={handleChange}
@@ -77,13 +77,14 @@ function LoginModal(props) {
           margin="dense"
           label="Password"
           type="password"
+          name="password"
           variant="standard"
           fullWidth
           onChange={handleChange}
         />
         {error ? (
           <DialogContentText>
-            <p>The provided credentials are incorrect</p>
+            The provided credentials are incorrect
           </DialogContentText>
         ) : null}
       </DialogContent>

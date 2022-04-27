@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../../utils/queries";
+import { firstLetter } from "../../utils/helpers";
+import spinner from "../../assets/spinner.gif";
 import "./style.css";
-import LoginModal from "../LoginModal";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,6 +18,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import LoginModal from "../LoginModal";
 
 const pages = ["About Us", "Services", "Gallery", "Contact"];
 const settings = ["Dashboard", "Logout"];
@@ -24,6 +27,7 @@ const Nav = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [openLogin, setOpenLogin] = useState(false);
+  const { loading, data: userData } = useQuery(QUERY_ME);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -46,10 +50,13 @@ const Nav = () => {
         <>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar
-                alt="Matthew Pandolfo"
-                src="/static/images/avatar/2.jpg"
-              />
+              {loading ? (
+                <Avatar src={spinner} />
+              ) : (
+                <Avatar alt="Matthew Pandolfo">
+                  {firstLetter(userData.me.firstName)}
+                </Avatar>
+              )}
             </IconButton>
           </Tooltip>
           <Menu
