@@ -4,22 +4,74 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { firstLetter } from "../../utils/helpers";
 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import LoginModal from "../LoginModal";
-import { CircularProgress } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Fab,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+  Typography,
+  Zoom,
+} from "@mui/material";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-const Nav = () => {
+function ElevationScroll(props) {
+  const { children } = props;
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0,
+    color: trigger ? "nav" : "navclear",
+  });
+}
+
+function ScrollTop(props) {
+  const { children } = props;
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100,
+  });
+
+  const handleClick = (event) => {
+    const anchor = (event.target.ownerDocument || document).querySelector(
+      ".hero"
+    );
+
+    if (anchor) {
+      anchor.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
+
+  return (
+    <Zoom in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}>
+        {children}
+      </Box>
+    </Zoom>
+  );
+}
+
+const Nav = (props) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [openLogin, setOpenLogin] = useState(false);
@@ -35,7 +87,6 @@ const Nav = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-    console.log(titleRef.current);
     titleRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -93,7 +144,7 @@ const Nav = () => {
         <Button
           color="inherit"
           onClick={() => setOpenLogin(true)}
-          sx={{ my: 2, display: "block" }}>
+          sx={{ my: 2, display: "block", transition: "none" }}>
           Login
         </Button>
       );
@@ -102,113 +153,125 @@ const Nav = () => {
 
   return (
     <>
-      <AppBar position="fixed" color="nav" sx={{paddingRight: "0px"}}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-              }}>
-              Attitudes Design
-            </Typography>
-
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              Attitudes Design
-            </Typography>
-
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "flex", md: "none" },
-                justifyContent: "flex-end",
-              }}>
-              {showLogin()}
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}>
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+      <ElevationScroll {...props}>
+        <AppBar
+          sx={{ paddingRight: "0px !important", transition: "all 0.2s ease" }}
+          position="fixed"
+          id="navbar"
+          color="nav">
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
                 }}>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">About Us</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Services</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Gallery</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Contact</Typography>
-                </MenuItem>
-              </Menu>
-            </Box>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                justifyContent: "flex-end",
-                marginRight: "10px",
-              }}>
-              <Button
-                color="inherit"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}>
-                About Us
-              </Button>
-              <Button
-                color="inherit"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}
-                ref={titleRef}>
-                Services
-              </Button>
-              <Button
-                color="inherit"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}>
-                Gallery
-              </Button>
-              <Button
-                color="inherit"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}>
-                Contact
-              </Button>
-              {showLogin()}
-            </Box>
+                Attitudes Hair Design
+              </Typography>
 
-            <Box sx={{ flexGrow: 0 }}>{showProfile()}</Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                Attitudes Hair Design
+              </Typography>
+
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "flex", md: "none" },
+                  justifyContent: "flex-end",
+                }}>
+                {showLogin()}
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={handleOpenNavMenu}>
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">About Us</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Services</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Gallery</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Contact</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "flex-end",
+                  marginRight: "10px",
+                }}>
+                <Button
+                  color="inherit"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, display: "block", transition: "none" }}>
+                  About Us
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, display: "block", transition: "none" }}
+                  ref={titleRef}>
+                  Services
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, display: "block", transition: "none" }}>
+                  Gallery
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, display: "block", transition: "none" }}>
+                  Contact
+                </Button>
+                {showLogin()}
+              </Box>
+
+              <Box sx={{ flexGrow: 0 }}>{showProfile()}</Box>
+            </Toolbar>
+          </Container>
+          <ScrollTop {...props}>
+            <Fab color="secondary" size="small" aria-label="scroll back to top">
+              <KeyboardArrowUpIcon />
+            </Fab>
+          </ScrollTop>
+        </AppBar>
+      </ElevationScroll>
 
       <LoginModal openLogin={openLogin} setOpenLogin={setOpenLogin} />
     </>

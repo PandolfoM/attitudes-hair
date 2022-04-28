@@ -14,7 +14,10 @@ const theme = createTheme({
     },
     nav: {
       main: "#fff",
-      contrastText: '#00000',
+    },
+    navclear: {
+      main: "transparent",
+      contrastText: '#fff',
     },
   },
 });
