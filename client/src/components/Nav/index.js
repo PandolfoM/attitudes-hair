@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
@@ -24,6 +24,7 @@ import {
   Zoom,
 } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { scroller } from "react-scroll";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -56,6 +57,8 @@ function ScrollTop(props) {
         behavior: "smooth",
         block: "center",
       });
+    } else {
+      return;
     }
   };
 
@@ -76,7 +79,6 @@ const Nav = (props) => {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [openLogin, setOpenLogin] = useState(false);
   const { loading, data: userData } = useQuery(QUERY_ME);
-  const titleRef = useRef(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -87,11 +89,17 @@ const Nav = (props) => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-    titleRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const ScrollTo = (element) => {
+    scroller.scrollTo(element, {
+      duration: 0,
+      delay: 0,
+    });
   };
 
   function showProfile() {
@@ -165,9 +173,13 @@ const Nav = (props) => {
                 variant="h6"
                 noWrap
                 component="div"
+                onClick={() => {
+                  handleCloseNavMenu();
+                  ScrollTo('hero');
+                }}
                 sx={{
                   mr: 2,
-                  display: { xs: "none", md: "flex" },
+                  display: { xs: "none", md: "flex", cursor: "pointer" },
                 }}>
                 Attitudes Hair Design
               </Typography>
@@ -176,7 +188,11 @@ const Nav = (props) => {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                onClick={() => {
+                  handleCloseNavMenu();
+                  ScrollTo('hero');
+                }}
+                sx={{ flexGrow: 1, display: { xs: "flex", md: "none", cursor: "pointer" } }}>
                 Attitudes Hair Design
               </Typography>
 
@@ -213,10 +229,18 @@ const Nav = (props) => {
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}>
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseNavMenu();
+                      ScrollTo("about");
+                    }}>
                     <Typography textAlign="center">About Us</Typography>
                   </MenuItem>
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem
+                    onClick={() => {
+                      handleCloseNavMenu();
+                      ScrollTo("service");
+                    }}>
                     <Typography textAlign="center">Services</Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu}>
@@ -236,15 +260,20 @@ const Nav = (props) => {
                 }}>
                 <Button
                   color="inherit"
-                  onClick={handleCloseNavMenu}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    ScrollTo("about");
+                  }}
                   sx={{ my: 2, display: "block", transition: "none" }}>
                   About Us
                 </Button>
                 <Button
                   color="inherit"
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block", transition: "none" }}
-                  ref={titleRef}>
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    ScrollTo("service");
+                  }}
+                  sx={{ my: 2, display: "block", transition: "none" }}>
                   Services
                 </Button>
                 <Button

@@ -8,7 +8,7 @@ function About() {
   return (
     <Box sx={{ textAlign: "center", marginTop: "50px" }}>
       <Container>
-        <header>
+        <header className="about">
           <Typography variant="h4">About Us</Typography>
           <hr
             style={{
