@@ -18,7 +18,7 @@ function Footer() {
               margin: "auto",
             }}>
             <div className="left-box">
-              <a href="https://goo.gl/maps/8J7nv9fTG9uY51BYA" target="__blank">
+              <p>
                 <LocationOnIcon
                   sx={{
                     backgroundColor: "#2d2d2d",
@@ -27,9 +27,14 @@ function Footer() {
                     marginRight: "10px",
                   }}
                 />{" "}
-                27 Whiting St #2218, Plainville, CT 06062
-              </a>
-              <a href="tel:8607478044" target="__blank">
+                <a
+                  href="https://goo.gl/maps/8J7nv9fTG9uY51BYA"
+                  target="__blank">
+                  27 Whiting St #2218 <br />
+                  Plainville, Connecticut
+                </a>
+              </p>
+              <p>
                 <Phone
                   sx={{
                     backgroundColor: "#2d2d2d",
@@ -38,9 +43,11 @@ function Footer() {
                     marginRight: "10px",
                   }}
                 />{" "}
-                +1 (860) 747 8044
-              </a>
-              <a href="mailto:matt@pandolf.com" target="__blank">
+                <a href="tel:8607478044" target="__blank">
+                  +1 (860) 747 8044
+                </a>
+              </p>
+              <p>
                 <Email
                   sx={{
                     backgroundColor: "#2d2d2d",
@@ -49,12 +56,14 @@ function Footer() {
                     marginRight: "10px",
                   }}
                 />{" "}
-                test Email
-              </a>
+                <a href="mailto:tina@pandolfo.com" target="__blank">
+                  tina@pandolfo.com
+                </a>
+              </p>
             </div>
             <div className="right-box">
               <h3>About the company</h3>
-              <p style={{opacity: "0.5", fontWeight: "300"}}>
+              <p style={{ opacity: "0.5", fontWeight: "300" }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>

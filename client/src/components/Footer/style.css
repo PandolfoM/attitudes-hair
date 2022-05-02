@@ -4,13 +4,15 @@
   align-items: center;
 }
 
-.left-box > a {
+.left-box > p {
   display: flex;
   align-items: center;
-  text-decoration: none;
-  color: white;
-  margin: 1em 0;
 }
+
+.left-box > p > a {
+  color: white;
+}
+
 
 .right-box {
   flex-grow: 1;
