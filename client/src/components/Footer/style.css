@@ -1,0 +1,22 @@
+.left-box {
+  min-width: 60%;
+  flex-grow: 0;
+  align-items: center;
+}
+
+.left-box > a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  margin: 1em 0;
+}
+
+.right-box {
+  flex-grow: 1;
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.871);
+  color: white;
+}

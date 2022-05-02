@@ -11,6 +11,7 @@ import "./style.css";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
