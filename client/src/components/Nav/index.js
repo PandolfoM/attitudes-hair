@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
@@ -34,10 +34,16 @@ function ElevationScroll(props) {
     threshold: 0,
   });
 
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-    color: trigger ? "nav" : "navclear",
-  });
+  if (window.location.pathname === "/contact") {
+    return React.cloneElement(children, {
+      elevation: trigger ? 4 : 0,
+    });
+  } else {
+    return React.cloneElement(children, {
+      elevation: trigger ? 4 : 0,
+      color: trigger ? "nav" : "navclear",
+    });
+  }
 }
 
 function ScrollTop(props) {
@@ -95,7 +101,7 @@ const Nav = (props) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  
   function showProfile() {
     if (Auth.loggedIn()) {
       return (

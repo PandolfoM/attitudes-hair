@@ -1,0 +1,23 @@
+.left-contact {
+  min-width: 40%;
+  flex-grow: 0;
+  align-items: center;
+}
+
+.right-contact {
+  flex-grow: 1;
+}
+
+.contact {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.contact-content {
+  position: relative;
+}

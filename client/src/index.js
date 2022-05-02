@@ -13,7 +13,8 @@ const theme = createTheme({
       main: "#173753",
     },
     nav: {
-      main: "#fff",
+      main: "#212121",
+      contrastText: '#fff',
     },
     navclear: {
       main: "transparent",

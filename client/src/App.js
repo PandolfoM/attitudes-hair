@@ -11,7 +11,6 @@ import "./style.css";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
@@ -38,7 +37,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Nav />
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/contact" element={<Contact />} />
