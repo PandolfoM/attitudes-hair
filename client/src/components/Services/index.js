@@ -9,7 +9,7 @@ function Services() {
   return (
     <Box sx={{ textAlign: "center", marginTop: "50px" }}>
       <Container>
-        <header className="service">
+        <header className="service" id="service">
           <Typography variant="h4">Services</Typography>
           <hr
             style={{

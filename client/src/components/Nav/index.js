@@ -3,6 +3,8 @@ import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { firstLetter } from "../../utils/helpers";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -24,7 +26,6 @@ import {
   Zoom,
 } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { scroller } from "react-scroll";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -93,13 +94,6 @@ const Nav = (props) => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  };
-
-  const ScrollTo = (element) => {
-    scroller.scrollTo(element, {
-      duration: 0,
-      delay: 0,
-    });
   };
 
   function showProfile() {
@@ -173,27 +167,24 @@ const Nav = (props) => {
                 variant="h6"
                 noWrap
                 component="div"
-                onClick={() => {
-                  handleCloseNavMenu();
-                  ScrollTo('hero');
-                }}
+                onClick={handleCloseNavMenu}
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex", cursor: "pointer" },
                 }}>
-                Attitudes Hair Design
+                <Link to="/">Attitudes Hair Design</Link>
               </Typography>
 
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                onClick={() => {
-                  handleCloseNavMenu();
-                  ScrollTo('hero');
-                }}
-                sx={{ flexGrow: 1, display: { xs: "flex", md: "none", cursor: "pointer" } }}>
-                Attitudes Hair Design
+                onClick={handleCloseNavMenu}
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "flex", md: "none", cursor: "pointer" },
+                }}>
+                <Link to="/">Attitudes Hair Design</Link>
               </Typography>
 
               <Box
@@ -229,25 +220,20 @@ const Nav = (props) => {
                   sx={{
                     display: { xs: "block", md: "none" },
                   }}>
-                  <MenuItem
-                    onClick={() => {
-                      handleCloseNavMenu();
-                      ScrollTo("about");
-                    }}>
-                    <Typography textAlign="center">About Us</Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      handleCloseNavMenu();
-                      ScrollTo("service");
-                    }}>
-                    <Typography textAlign="center">Services</Typography>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                      <HashLink to="/#about">About Us</HashLink>
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Gallery</Typography>
+                    <Typography textAlign="center">
+                      <HashLink to="/#services">Services</HashLink>
+                    </Typography>
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">Contact</Typography>
+                    <Typography textAlign="center">
+                      <Link to="/contact">Contact</Link>
+                    </Typography>
                   </MenuItem>
                 </Menu>
               </Box>
@@ -260,33 +246,21 @@ const Nav = (props) => {
                 }}>
                 <Button
                   color="inherit"
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    ScrollTo("about");
-                  }}
+                  onClick={handleCloseNavMenu}
                   sx={{ my: 2, display: "block", transition: "none" }}>
-                  About Us
-                </Button>
-                <Button
-                  color="inherit"
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    ScrollTo("service");
-                  }}
-                  sx={{ my: 2, display: "block", transition: "none" }}>
-                  Services
+                  <HashLink to="/#about">About Us</HashLink>
                 </Button>
                 <Button
                   color="inherit"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, display: "block", transition: "none" }}>
-                  Gallery
+                  <HashLink to="/#service">Services</HashLink>
                 </Button>
                 <Button
                   color="inherit"
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, display: "block", transition: "none" }}>
-                  Contact
+                  <Link to="/contact">Contact</Link>
                 </Button>
                 {showLogin()}
               </Box>

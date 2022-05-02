@@ -4,7 +4,7 @@ import Phone from "@mui/icons-material/Phone";
 import Email from "@mui/icons-material/Email";
 import { Box } from "@mui/system";
 import "./style.css";
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 
 function Footer() {
   return (

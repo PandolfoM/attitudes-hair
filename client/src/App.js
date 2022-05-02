@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 import "./style.css";
 
 import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -40,6 +41,7 @@ function App() {
           <Nav />
           <Routes>
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
         </div>
