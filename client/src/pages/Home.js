@@ -3,14 +3,16 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Services from "../components/Services";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
     <>
-      <Nav page="contact"/>
+      <Nav />
       <Hero />
       <About />
       <Services />
+      <Footer />
     </>
   );
 }

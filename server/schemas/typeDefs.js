@@ -6,6 +6,14 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
+    color: String
+  }
+
+  type Price {
+    _id: ID
+    name: String
+    price: Float
+    additional: Boolean
   }
 
   type Auth {
@@ -17,6 +25,8 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(email: String!): User
+    prices: [Price]
+    price(name: String!): Price
   }
 
   type Mutation {
@@ -25,12 +35,19 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
+      color: String
+    ): Auth
+    addPrice(
+      name: String!
+      price: Float!
+      additional: Boolean
     ): Auth
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
+      color: String
     ): User
     deleteUser(_id: ID!): User
     login(email: String!, password: String!): Auth

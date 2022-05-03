@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
@@ -111,7 +111,7 @@ const Nav = (props) => {
               {loading ? (
                 <CircularProgress />
               ) : (
-                <Avatar alt="Matthew Pandolfo">
+                <Avatar alt={`${userData.me.firstName} ${userData.me.lastName}`}>
                   {firstLetter(userData.me.firstName)}
                 </Avatar>
               )}
@@ -133,10 +133,10 @@ const Nav = (props) => {
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">Dashboard</Typography>
+              <Typography textAlign="center"><Link to="/dashboard">Dashboard</Link></Typography>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography href="/" onClick={() => Auth.logout()}>
+              <Typography onClick={() => Auth.logout()}>
                 Logout
               </Typography>
             </MenuItem>

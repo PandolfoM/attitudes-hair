@@ -4,9 +4,10 @@ export const QUERY_ME = gql`
   query Me {
     me {
       _id
-      email
       firstName
       lastName
+      email
+      color
     }
   }
 `;

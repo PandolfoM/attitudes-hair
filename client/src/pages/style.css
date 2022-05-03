@@ -21,3 +21,71 @@
 .contact-content {
   position: relative;
 }
+
+/* Sidebar */
+.sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  padding: 0px 10px;
+  background-color: #212121;
+}
+
+.sidebar svg {
+  color: white;
+  width: 60%;
+  height: auto;
+}
+
+.sidebar .profile-details svg {
+  color: white;
+  width: 50%;
+  height: auto;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .nav-list {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100%;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 8px 0;
+  list-style: none;
+}
+
+.sidebar li.profile{
+  position: fixed;
+  width: 60px;
+  left: 0;
+  bottom: 0px;
+  padding: 10px 14px;
+  overflow: hidden;
+}
+
+.sidebar .logo-details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sidebar .logo-details .dashboard{
+  color: #fff;
+  font-weight: 600;
+}
+
+.dashboard-content {
+  margin-left: 100px;
+}

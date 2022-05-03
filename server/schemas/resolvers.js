@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User } = require("../models");
+const Price = require("../models/Price");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -20,6 +21,12 @@ const resolvers = {
     },
     user: async (parent, { email }) => {
       return User.findOne({ email }).select("-__v -password");
+    },
+    prices: async () => {
+      return Price.find();
+    },
+    price: async (parent, { name }) => {
+      return Price.findOne({ name });
     },
   },
   Mutation: {
@@ -48,6 +55,15 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+    addPrice: async (parent, args, context) => {
+      if (context.user) {
+        const price = await Price.create(args);
+
+        return price;
+      }
+
+      throw new AuthenticationError("Not Logged In");
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
