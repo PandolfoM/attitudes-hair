@@ -8,9 +8,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import SellIcon from "@mui/icons-material/Sell";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Avatar, IconButton, Tooltip } from "@mui/material";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
 import SettingsModal from "../components/SettingsModal";
 import { firstLetter } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -65,6 +67,12 @@ function Dashboard() {
         </ul>
       </div>
       <div className="dashboard-content">
+      <Link to={"/"}>
+        <Button sx={{paddingLeft: "0"}}>
+          <ArrowBackIosNewIcon />
+          Back to Home
+        </Button>
+        </Link>
         <h1>Welcome, {user.firstName} {user.lastName}</h1>
         <SettingsModal openSettings={openSettings} setOpenSettings={setOpenSettings}/>
       </div>
