@@ -102,12 +102,10 @@ function SettingsModal(props) {
               {user.color !== sketchPickerColor ? (
                 <Button
                   variant="contained"
+                  color="error"
                   sx={{
-                    backgroundColor: "#a90202",
-                    color: "white",
                     margin: "5px 0",
                   }}
-                  color="nav"
                   onClick={handleColorReset}>
                   Reset Color
                 </Button>

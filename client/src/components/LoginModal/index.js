@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import { useNavigate } from 'react-router-dom';
 import {
   Button,
   Dialog,
@@ -15,6 +16,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 
 function LoginModal(props) {
+  const navigate = useNavigate();
   const { openLogin, setOpenLogin } = props;
   const [formState, setFormState] = useState({
     email: "",
@@ -34,6 +36,7 @@ function LoginModal(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      navigate('/dashboard');
     } catch (e) {
       console.log(e);
     }
