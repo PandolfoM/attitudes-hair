@@ -23,8 +23,8 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation UpdateUser($color: String) {
-    updateUser(color: $color) {
+  mutation UpdateUser($pfp: String, $color: String) {
+    updateUser(pfp: $pfp, color: $color) {
       _id
     }
   }

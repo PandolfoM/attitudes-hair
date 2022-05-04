@@ -56,7 +56,7 @@ function Dashboard() {
                 </IconButton>
               </Tooltip>
               <Tooltip title={`${user.firstName} ${user.lastName}`} placement="right" arrow>
-                <Avatar alt={`${user.firstName} ${user.lastName}`} sx={{backgroundColor: user.color}}>
+                <Avatar alt={`${user.firstName} ${user.lastName}`} sx={{backgroundColor: user.color}} src={`${user.pfp}`}>
                   {firstLetter(user.firstName)}
                 </Avatar>
               </Tooltip>

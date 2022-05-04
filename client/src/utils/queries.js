@@ -8,6 +8,7 @@ export const QUERY_ME = gql`
       lastName
       email
       color
+      pfp
     }
   }
 `;

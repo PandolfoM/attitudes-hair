@@ -17,7 +17,9 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    match: [/.+\@.+\..+/, "Not a valid email address"],
     unique: true,
+    lowercase: true,
   },
   password: {
     type: String,
@@ -26,6 +28,11 @@ const userSchema = new Schema({
   },
   color: {
     type: String,
+  },
+  pfp: {
+    type: String,
+    match: [/^(http|ftp|https|www):\/\/([\w+?\.\w+])+([a-zA-Z0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?$/, "Not a valid URL"],
+    default: "",
   },
 });
 

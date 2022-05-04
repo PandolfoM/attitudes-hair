@@ -4,23 +4,24 @@ import {
   Alert,
   Avatar,
   Button,
-  Collapse,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogTitle,
   Grid,
   IconButton,
   Snackbar,
+  TextField,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { firstLetter } from "../../utils/helpers";
 import { UPDATE_USER } from "../../utils/mutations";
-import Auth from "../../utils/auth";
 
 function SettingsModal(props) {
   const [sketchPickerColor, setSketchPickerColor] = useState("#bdbdbd");
+  const [profilePic, setProfilePic] = useState("")
   const [openAlert, setOpenAlert] = useState(false);
   const { openSettings, setOpenSettings } = props;
   const { loading, data: userData } = useQuery(QUERY_ME);
@@ -31,6 +32,10 @@ function SettingsModal(props) {
     setSketchPickerColor(user.color);
   }, [user.color]);
 
+  useEffect(() => {
+    setProfilePic(user.pfp);
+  }, [user.pfp]);
+
   const handleClose = () => {
     setOpenSettings(false);
   };
@@ -39,15 +44,14 @@ function SettingsModal(props) {
     setOpenAlert(false);
   };
 
-  const handleColorSave = async () => {
+  const handleSave = async () => {
     try {
       await updateUser({
-        variables: { color: sketchPickerColor },
+        variables: { color: sketchPickerColor, pfp: profilePic},
       });
 
-      if (user.color !== sketchPickerColor) {
-        setOpenAlert(true);
-      }
+      setOpenAlert(true);
+
     } catch (e) {
       console.log(e);
     }
@@ -56,6 +60,10 @@ function SettingsModal(props) {
   const handleColorReset = async () => {
     setSketchPickerColor(user.color);
   };
+
+  const handleChange = (event) => {
+    setProfilePic(event.target.value)
+  }
 
   return (
     <>
@@ -82,13 +90,15 @@ function SettingsModal(props) {
           <h4>Avatar</h4>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <Button
-                variant="contained"
-                sx={{ display: "flex", margin: "5px 0" }}
-                color="secondary"
-                onClick={handleColorSave}>
-                Save Color
-              </Button>
+              <TextField
+                margin="dense"
+                label="Profile Picture URL"
+                type="url"
+                fullWidth
+                variant="standard"
+                value={profilePic}
+                onChange={handleChange}
+              />
               {user.color !== sketchPickerColor ? (
                 <Button
                   variant="contained"
@@ -99,7 +109,7 @@ function SettingsModal(props) {
                   }}
                   color="nav"
                   onClick={handleColorReset}>
-                  Reset
+                  Reset Color
                 </Button>
               ) : null}
             </Grid>
@@ -130,6 +140,9 @@ function SettingsModal(props) {
             </Grid>
           </Grid>
         </DialogContent>
+        <DialogActions>
+          <Button onClick={handleSave} variant="contained">Save</Button>
+        </DialogActions>
       </Dialog>
       <Snackbar
         open={openAlert}
@@ -139,7 +152,7 @@ function SettingsModal(props) {
           onClose={handleAlertClose}
           severity="success"
           sx={{ width: "100%" }}>
-          Color successfully changed
+          Saved!
         </Alert>
       </Snackbar>
     </>

@@ -7,6 +7,7 @@ const typeDefs = gql`
     lastName: String
     email: String
     color: String
+    pfp: String
   }
 
   type Price {
@@ -36,6 +37,7 @@ const typeDefs = gql`
       email: String!
       password: String!
       color: String
+      pfp: String
     ): Auth
     addPrice(
       name: String!
@@ -48,6 +50,7 @@ const typeDefs = gql`
       email: String
       password: String
       color: String
+      pfp: String
     ): User
     deleteUser(_id: ID!): User
     login(email: String!, password: String!): Auth
