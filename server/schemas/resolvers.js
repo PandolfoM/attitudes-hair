@@ -59,8 +59,16 @@ const resolvers = {
     addPrice: async (parent, args, context) => {
       if (context.user) {
         const price = await Price.create(args);
+        const token = signToken(price);
 
-        return price;
+        return { token, price };
+      }
+
+      throw new AuthenticationError("Not Logged In");
+    },
+    deletePrice: async (parent, args, context) => {
+      if (context.user) {
+        return await Price.findByIdAndRemove(args);
       }
 
       throw new AuthenticationError("Not Logged In");

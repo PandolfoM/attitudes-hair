@@ -89,7 +89,7 @@ function Dashboard() {
                 </IconButton>
               </Tooltip>
               <Tooltip title="Logout" placement="right" arrow>
-                <IconButton>
+                <IconButton onClick={() => Auth.logout()}>
                   <LogoutIcon />
                 </IconButton>
               </Tooltip>

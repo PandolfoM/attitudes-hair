@@ -29,3 +29,23 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const ADD_PRICE = gql`
+  mutation AddPrice($name: String!, $price: Float!, $additional: Boolean) {
+    addPrice(name: $name, price: $price, additional: $additional) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const DELETE_PRICE = gql`
+  mutation DeletePrice($id: ID!) {
+    deletePrice(_id: $id) {
+      _id
+      name
+    }
+  }
+`;

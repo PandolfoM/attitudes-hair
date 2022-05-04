@@ -53,6 +53,7 @@ const typeDefs = gql`
       pfp: String
     ): User
     deleteUser(_id: ID!): User
+    deletePrice(_id: ID!): Price
     login(email: String!, password: String!): Auth
   }
 `;

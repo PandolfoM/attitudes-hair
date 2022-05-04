@@ -9,7 +9,8 @@ db.once('open', async () => {
     lastName: 'Pandolfo',
     email: 'matt@pandolfo.com',
     password: 'password',
-    color: "#5001A6"
+    color: "#5001A6",
+    pfp: "https://66.media.tumblr.com/42fa95d36ef8aa553cd16121967e3197/ff45e51704859831-c8/s540x810/018d80299762e45793adcf497b5c5f1c6c631bc5.gifv"
   });
 
   await User.create({

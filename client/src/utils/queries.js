@@ -12,3 +12,14 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_PRICES = gql`
+  query Prices {
+    prices {
+      _id
+      name
+      price
+      additional
+    }
+  }
+`;
