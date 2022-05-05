@@ -52,8 +52,14 @@ const typeDefs = gql`
       color: String
       pfp: String
     ): User
+    updatePrice(
+      _id: ID!
+      name: String
+      price: Float
+      additional: Boolean
+    ): Price
     deleteUser(_id: ID!): User
-    deletePrice(_id: ID!): Price
+    deletePrice(_id: ID, name: String): Price
     login(email: String!, password: String!): Auth
   }
 `;

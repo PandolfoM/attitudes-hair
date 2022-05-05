@@ -23,3 +23,14 @@ export const QUERY_PRICES = gql`
     }
   }
 `;
+
+export const QUERY_PRICE = gql`
+  query Price($name: String!) {
+    price(name: $name) {
+      _id
+      name
+      price
+      additional
+    }
+  }
+`;

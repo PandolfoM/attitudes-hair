@@ -42,10 +42,20 @@ export const ADD_PRICE = gql`
 `;
 
 export const DELETE_PRICE = gql`
-  mutation DeletePrice($id: ID!) {
-    deletePrice(_id: $id) {
+  mutation DeletePrice($name: String!) {
+    deletePrice(name: $name) {
       _id
       name
+      price
+      additional
     }
   }
+`;
+
+export const UPDATE_PRICE = gql`
+mutation UpdatePrice($id: ID!, $name: String, $price: Float, $additional: Boolean) {
+  updatePrice(_id: $id, name: $name, price: $price, additional: $additional) {
+    _id
+  }
+}
 `;

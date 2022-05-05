@@ -77,7 +77,7 @@ function Dashboard() {
             <Tooltip title="Users" placement="right" arrow>
               <Tab label={<PersonIcon />} {...a11yProps(0)} />
             </Tooltip>
-            <Tooltip title="Prices" placement="right" arrow>
+            <Tooltip title="Price Menu" placement="right" arrow>
               <Tab label={<SellIcon />} {...a11yProps(1)} />
             </Tooltip>
           </Tabs>

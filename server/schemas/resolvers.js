@@ -68,10 +68,19 @@ const resolvers = {
     },
     deletePrice: async (parent, args, context) => {
       if (context.user) {
-        return await Price.findByIdAndRemove(args);
+        return await Price.findOneAndRemove(args);
       }
 
       throw new AuthenticationError("Not Logged In");
+    },
+    updatePrice: async (parent, args, context) => {
+      if (context.user) {
+        return await Price.findOneAndUpdate({_id: args._id}, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError("Not logged in");
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

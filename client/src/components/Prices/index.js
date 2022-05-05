@@ -14,29 +14,32 @@ import {
 import { useMutation } from "@apollo/client";
 import { ADD_PRICE } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import RemoveItem from "../RemoveItem";
+import EditItem from "../EditItem";
 
 function Prices() {
   const [addPrice, { error }] = useMutation(ADD_PRICE);
+
   const [formState, setFormState] = useState({
     name: "",
     price: "",
     extra: false,
   });
 
-  const paperStyle = {
-    width: "500px",
-    margin: "10px",
-    textAlign: "center",
-  };
-
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
     try {
+      let extra;
+      if (formState.extra === "true") {
+        extra = true
+      } else {
+        extra = false
+      }
+
       const mutationResponse = await addPrice({
         variables: {
           name: formState.name,
           price: parseInt(formState.price),
-          extra: formState.extra,
+          additional: extra,
         },
       });
       const token = mutationResponse.data.login.token;
@@ -56,19 +59,19 @@ function Prices() {
 
   return (
     <Box>
-      <h2>Prices</h2>
+      <h2>Price Menu</h2>
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         <Paper
-          color="nav"
           sx={{
-            "& .MuiTextField-root": { m: 1, width: "100%" },
-            "& .MuiFormControl-root": { m: 1, width: "100%" },
+            "& .MuiTextField-root": { margin: "8px 0", width: "100%" },
+            "& .MuiFormControl-root": { margin: "8px 0", width: "100%" },
             width: "500px",
             margin: "10px",
+            height: "auto",
             textAlign: "center",
           }}>
           <h3>Add Item</h3>
-          <Box component="form" sx={{ m: 2 }}>
+          <Box component="form" sx={{ margin: "10px", height: "100%" }}>
             {error && formState.name === "" ? (
               <TextField
                 error
@@ -126,11 +129,33 @@ function Prices() {
             </Button>
           </Box>
         </Paper>
-        <Paper sx={paperStyle}>
+        <Paper
+          sx={{
+            "& .MuiTextField-root": { margin: "8px 0", width: "100%" },
+            "& .MuiFormControl-root": { margin: "8px 0", width: "100%" },
+            width: "500px",
+            margin: "10px",
+            height: "auto",
+            textAlign: "center",
+          }}>
           <h3>Remove Item</h3>
+          <Box component="form" sx={{ margin: "10px", height: "100%" }}>
+            <RemoveItem />
+          </Box>
         </Paper>
-        <Paper sx={paperStyle}>
+        <Paper
+          sx={{
+            "& .MuiTextField-root": { margin: "8px 0", width: "100%" },
+            "& .MuiFormControl-root": { margin: "8px 0", width: "100%" },
+            width: "500px",
+            margin: "10px",
+            height: "auto",
+            textAlign: "center",
+          }}>
           <h3>Edit Item</h3>
+          <Box component="form" sx={{ margin: "10px", height: "100%" }}>
+            <EditItem />
+          </Box>
         </Paper>
       </Box>
     </Box>
