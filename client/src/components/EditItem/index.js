@@ -15,7 +15,7 @@ import { UPDATE_PRICE } from "../../utils/mutations";
 import { QUERY_PRICE, QUERY_PRICES } from "../../utils/queries";
 
 function EditItem() {
-  const [updatePrice, { error }] = useMutation(UPDATE_PRICE);
+  const [updatePrice] = useMutation(UPDATE_PRICE);
   const { loading, data: pricesData } = useQuery(QUERY_PRICES);
   const [searchInput, setSearchInput] = useState();
   const [formState, setFormState] = useState({
@@ -41,9 +41,9 @@ function EditItem() {
     try {
       let extra;
       if (formState.extra === "true") {
-        extra = true
+        extra = true;
       } else {
-        extra = false
+        extra = false;
       }
       await updatePrice({
         variables: {
@@ -66,8 +66,8 @@ function EditItem() {
         extra: price.additional,
       });
     }
-  }, [price])
-  
+  }, [price]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -89,7 +89,9 @@ function EditItem() {
             disablePortal
             options={priceNames}
             onChange={handleSearch}
-            renderInput={(params) => <TextField {...params} label="Search Item" />}
+            renderInput={(params) => (
+              <TextField {...params} label="Search Item" />
+            )}
           />
           {price ? (
             <Box>
@@ -97,7 +99,7 @@ function EditItem() {
                 name="id"
                 defaultValue={price._id}
                 variant="outlined"
-                sx={{display: "none"}}
+                sx={{ display: "none" }}
               />
               <TextField
                 name="name"
