@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { Autocomplete, Button, TextField, Typography } from "@mui/material";
+import { Autocomplete, Button, CircularProgress, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { DELETE_PRICE } from "../../utils/mutations";
 import { QUERY_PRICES } from "../../utils/queries";
@@ -46,7 +46,7 @@ function RemoveItem() {
           renderInput={(params) => <TextField {...params} label="Items" />}
         />
       ) : (
-        <h3>Loading...</h3>
+        <CircularProgress />
       )}
       {error && <Typography color="error">Field empty</Typography>}
       <Button variant="contained" fullWidth onClick={handleFormSubmit}>

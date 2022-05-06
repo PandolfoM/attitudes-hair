@@ -101,22 +101,25 @@ const Nav = (props) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  
+
   function showProfile() {
     if (Auth.loggedIn()) {
       return (
         <>
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              {loading ? (
-                <CircularProgress />
-              ) : (
-                <Avatar alt={`${userData.me.firstName} ${userData.me.lastName}`}>
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <Tooltip title={`${userData.me.firstName} ${userData.me.lastName}`}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar
+                  alt={`${userData.me.firstName} ${userData.me.lastName}`}
+                  sx={{ backgroundColor: userData.me.color }}
+                  src={`${userData.me.pfp}`}>
                   {firstLetter(userData.me.firstName)}
                 </Avatar>
-              )}
-            </IconButton>
-          </Tooltip>
+              </IconButton>
+            </Tooltip>
+          )}
           <Menu
             sx={{ mt: "45px" }}
             id="menu-appbar"
@@ -133,12 +136,12 @@ const Nav = (props) => {
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center"><Link to="/dashboard">Dashboard</Link></Typography>
+              <Typography textAlign="center">
+                <Link to="/dashboard">Dashboard</Link>
+              </Typography>
             </MenuItem>
             <MenuItem onClick={handleCloseUserMenu}>
-              <Typography onClick={() => Auth.logout()}>
-                Logout
-              </Typography>
+              <Typography onClick={() => Auth.logout()}>Logout</Typography>
             </MenuItem>
           </Menu>
         </>
