@@ -69,10 +69,6 @@ function EditUser() {
     }
   }, [user]);
 
-  useEffect(() => {
-    console.log(formState);
-  }, [formState])
-
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

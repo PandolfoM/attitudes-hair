@@ -17,7 +17,7 @@ import { QUERY_PRICE, QUERY_PRICES } from "../../utils/queries";
 
 function EditItem() {
   const [updatePrice] = useMutation(UPDATE_PRICE);
-  const { data: pricesData } = useQuery(QUERY_PRICES);
+  const { loading, data: pricesData } = useQuery(QUERY_PRICES);
   const [searchInput, setSearchInput] = useState();
   const [formState, setFormState] = useState({
     name: "",
@@ -27,7 +27,7 @@ function EditItem() {
   const prices = pricesData?.prices;
   let priceNames = [];
 
-  const { loading, data: priceData } = useQuery(QUERY_PRICE, {
+  const { data: priceData } = useQuery(QUERY_PRICE, {
     variables: { name: searchInput },
   });
   const price = priceData?.price;
