@@ -39,7 +39,7 @@ function Contact() {
                 width="100%"
                 height="100%"
                 style={{ border: "0px" }}
-                allowFullScreen="true"
+                allowFullScreen={false}
                 title="salonLocation"
                 loading="lazy"></iframe>
             </div>

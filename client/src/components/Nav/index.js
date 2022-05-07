@@ -34,7 +34,7 @@ function ElevationScroll(props) {
     threshold: 0,
   });
 
-  if (window.location.pathname === "/contact") {
+  if (window.location.pathname === "/contact" || window.location.pathname === "/pricing") {
     return React.cloneElement(children, {
       elevation: trigger ? 4 : 0,
     });
@@ -241,6 +241,11 @@ const Nav = (props) => {
                   </MenuItem>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
+                      <Link to="/pricing">Pricing</Link>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
                       <Link to="/contact">Contact</Link>
                     </Typography>
                   </MenuItem>
@@ -264,6 +269,12 @@ const Nav = (props) => {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, display: "block", transition: "none" }}>
                   <HashLink to="/#service">Services</HashLink>
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, display: "block", transition: "none" }}>
+                  <Link to="/pricing">Pricing</Link>
                 </Button>
                 <Button
                   color="inherit"

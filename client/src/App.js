@@ -12,6 +12,7 @@ import "./style.css";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
+import Pricing from "./pages/Pricing";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -41,6 +42,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/contact" element={<Contact />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/pricing" element={<Pricing />} />
           </Routes>
         </div>
       </Router>
