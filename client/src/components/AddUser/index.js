@@ -66,6 +66,7 @@ function AddUser() {
           name="email"
           label="Email *"
           type="email"
+          autoComplete="username"
           variant="outlined"
           value={formState.email}
           onChange={handleChange}
@@ -75,6 +76,7 @@ function AddUser() {
           name="email"
           label="Email *"
           type="email"
+          autoComplete="username"
           variant="outlined"
           value={formState.email}
           onChange={handleChange}
@@ -85,6 +87,8 @@ function AddUser() {
           error
           name="password"
           label="Password *"
+          type="password"
+          autoComplete="current-password"
           variant="outlined"
           value={formState.password}
           onChange={handleChange}
@@ -93,6 +97,8 @@ function AddUser() {
         <TextField
           name="password"
           label="Password *"
+          type="password"
+          autoComplete="current-password"
           variant="outlined"
           value={formState.password}
           onChange={handleChange}
