@@ -15,7 +15,7 @@ function Prices() {
 
   return (
     <Box>
-      <h2>Price Menu</h2>
+      <h2>Price Menu Settings</h2>
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         <Paper
           sx={{

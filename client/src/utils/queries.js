@@ -13,6 +13,19 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query Users {
+    users {
+      _id
+      email
+      firstName
+      lastName
+      color
+      pfp
+    }
+  }
+`;
+
 export const QUERY_PRICES = gql`
   query Prices {
     prices {
