@@ -25,12 +25,12 @@ function Contact() {
               <Stack spacing={2}>
                 <h2>Hours</h2>
                 <p>Sunday: Closed</p>
-                <p>Monday: All Day</p>
-                <p>Tuesday: All Day</p>
-                <p>Wednesday: All Day</p>
-                <p>Thursday: All Day</p>
-                <p>Friday: All Day</p>
-                <p>Saturday: Closed</p>
+                <p>Monday: Closed</p>
+                <p>Tuesday: 8:00 AM - 8:00 PM</p>
+                <p>Wednesday: 8:00 AM - 8:00 PM</p>
+                <p>Thursday: 8:00 AM - 2:00 PM</p>
+                <p>Friday: 8:00 AM - 2:00 PM</p>
+                <p>Saturday: 7:30 AM - 12:00 PM</p>
               </Stack>
             </div>
             <div className="right-contact">
