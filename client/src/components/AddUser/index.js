@@ -1,10 +1,18 @@
 import { useMutation } from "@apollo/client";
-import { Button, TextField, Typography } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Collapse,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { ADD_USER } from "../../utils/mutations";
 
 function AddUser() {
   const [addUser, { error }] = useMutation(ADD_USER);
+  const [openSnack, setOpenSnack] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -12,7 +20,12 @@ function AddUser() {
     lastName: "",
   });
 
+  const handleAlertClose = () => {
+    setOpenSnack(false);
+  };
+
   const handleFormSubmit = async (event) => {
+    event.preventDefault()
     try {
       await addUser({
         variables: {
@@ -22,8 +35,18 @@ function AddUser() {
           lastName: formState.lastName,
         },
       });
+
+      setFormState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+      });
+
+      setOpenSnack(true);
     } catch (e) {
       console.log(e);
+      setOpenAlert(true);
     }
   };
 
@@ -44,6 +67,7 @@ function AddUser() {
           label="Email *"
           type="email"
           variant="outlined"
+          value={formState.email}
           onChange={handleChange}
         />
       ) : (
@@ -52,6 +76,7 @@ function AddUser() {
           label="Email *"
           type="email"
           variant="outlined"
+          value={formState.email}
           onChange={handleChange}
         />
       )}
@@ -61,6 +86,7 @@ function AddUser() {
           name="password"
           label="Password *"
           variant="outlined"
+          value={formState.password}
           onChange={handleChange}
         />
       ) : (
@@ -68,6 +94,7 @@ function AddUser() {
           name="password"
           label="Password *"
           variant="outlined"
+          value={formState.password}
           onChange={handleChange}
         />
       )}
@@ -77,6 +104,7 @@ function AddUser() {
           name="firstName"
           label="First Name *"
           variant="outlined"
+          value={formState.firstName}
           onChange={handleChange}
         />
       ) : (
@@ -84,6 +112,7 @@ function AddUser() {
           name="firstName"
           label="First Name *"
           variant="outlined"
+          value={formState.firstName}
           onChange={handleChange}
         />
       )}
@@ -93,6 +122,7 @@ function AddUser() {
           name="lastName"
           label="Last Name *"
           variant="outlined"
+          value={formState.lastName}
           onChange={handleChange}
         />
       ) : (
@@ -100,10 +130,28 @@ function AddUser() {
           name="lastName"
           label="Last Name *"
           variant="outlined"
+          value={formState.lastName}
           onChange={handleChange}
         />
       )}
-      {error && <Typography color="error">Invalid Field(s)</Typography>}
+      <Collapse in={openAlert}>
+        <Alert severity="error" onClose={() => setOpenAlert(false)}>
+          Invalid Field(s)
+        </Alert>
+      </Collapse>
+      {!error && (
+        <Snackbar
+          open={openSnack}
+          autoHideDuration={3000}
+          onClose={handleAlertClose}>
+          <Alert
+            onClose={handleAlertClose}
+            severity="success"
+            sx={{ width: "100%" }}>
+            User Added!
+          </Alert>
+        </Snackbar>
+      )}
       <Button variant="contained" fullWidth onClick={handleFormSubmit}>
         Add User
       </Button>

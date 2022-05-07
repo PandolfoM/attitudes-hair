@@ -19,8 +19,8 @@ const resolvers = {
     users: async () => {
       return User.find().select("-__v -password");
     },
-    user: async (parent, { email }) => {
-      return User.findOne({ email }).select("-__v -password");
+    user: async (parent, { _id }) => {
+      return User.findOne({ _id }).select("-__v -password");
     },
     prices: async () => {
       return Price.find();
@@ -43,6 +43,15 @@ const resolvers = {
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    updateOtherUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate({_id: args._id}, args, {
           new: true,
         });
       }

@@ -29,6 +29,14 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const UPDATE_USER2 = gql`
+  mutation UpdateOtherUser($id: ID!, $firstName: String, $lastName: String, $email: String) {
+    updateOtherUser(_id: $id, firstName: $firstName, lastName: $lastName, email: $email) {
+      _id
+    }
+  }
+`;
+
 export const DELETE_USER = gql`
   mutation DeleteUser($id: ID!) {
     deleteUser(_id: $id) {

@@ -26,6 +26,19 @@ export const QUERY_USERS = gql`
   }
 `;
 
+export const QUERY_USER = gql`
+  query User($id: ID!) {
+    user(_id: $id) {
+      _id
+      email
+      firstName
+      lastName
+      color
+      pfp
+    }
+  }
+`;
+
 export const QUERY_PRICES = gql`
   query Prices {
     prices {

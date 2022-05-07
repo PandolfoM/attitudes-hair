@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import AddUser from "../AddUser";
 import RemoveUser from "../RemoveUser";
 import { QUERY_USERS } from "../../utils/queries";
+import EditUser from "../EditUser";
 
 function Prices() {
   const { refetch } = useQuery(QUERY_USERS);
@@ -53,7 +54,9 @@ function Prices() {
             textAlign: "center",
           }}>
           <h3>Edit User</h3>
-          <Box component="form" sx={{ margin: "10px", height: "100%" }}></Box>
+          <Box component="form" sx={{ margin: "10px", height: "100%" }}>
+            <EditUser />
+          </Box>
         </Paper>
         <Box
           sx={{
@@ -62,13 +65,13 @@ function Prices() {
             height: "auto",
             textAlign: "center",
           }}>
-            <Button
+          <Button
             variant="contained"
             onClick={handleRefetch}
             sx={{ width: "100%" }}>
             Refresh
           </Button>
-          </Box>
+        </Box>
       </Box>
     </Box>
   );

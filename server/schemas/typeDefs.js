@@ -25,7 +25,7 @@ const typeDefs = gql`
   type Query {
     me: User
     users: [User]
-    user(email: String!): User
+    user(_id: ID!): User
     prices: [Price]
     price(name: String!): Price
   }
@@ -51,6 +51,12 @@ const typeDefs = gql`
       password: String
       color: String
       pfp: String
+    ): User
+    updateOtherUser(
+      _id: ID!
+      firstName: String
+      lastName: String
+      email: String
     ): User
     updatePrice(
       _id: ID!

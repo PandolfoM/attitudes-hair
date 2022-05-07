@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { DELETE_USER, UPDATE_PRICE } from "../../utils/mutations";
+import { DELETE_USER } from "../../utils/mutations";
 import { QUERY_USERS } from "../../utils/queries";
 
 function RemoveUser() {
@@ -27,10 +27,10 @@ function RemoveUser() {
   const handleFormSubmit = async () => {
     try {
       const regEx = /[^-]*$/
-      let trim = regEx.exec(formState)
+      let id = regEx.exec(formState)
       await deleteUser({
         variables: {
-          id: trim[0].trim(),
+          id: id[0].trim(),
         },
       });
     } catch (e) {
