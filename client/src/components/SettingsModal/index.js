@@ -21,7 +21,7 @@ import { UPDATE_USER } from "../../utils/mutations";
 
 function SettingsModal(props) {
   const [sketchPickerColor, setSketchPickerColor] = useState("#bdbdbd");
-  const [profilePic, setProfilePic] = useState("")
+  const [profilePic, setProfilePic] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const { openSettings, setOpenSettings } = props;
   const { loading, data: userData } = useQuery(QUERY_ME);
@@ -47,11 +47,10 @@ function SettingsModal(props) {
   const handleSave = async () => {
     try {
       await updateUser({
-        variables: { color: sketchPickerColor, pfp: profilePic},
+        variables: { color: sketchPickerColor, pfp: profilePic },
       });
 
       setOpenAlert(true);
-
     } catch (e) {
       console.log(e);
     }
@@ -62,8 +61,8 @@ function SettingsModal(props) {
   };
 
   const handleChange = (event) => {
-    setProfilePic(event.target.value)
-  }
+    setProfilePic(event.target.value);
+  };
 
   return (
     <>
@@ -99,6 +98,18 @@ function SettingsModal(props) {
                 value={profilePic}
                 onChange={handleChange}
               />
+              <Avatar
+                alt={`${user.firstName} ${user.lastName}`}
+                sx={{
+                  backgroundColor: user.color,
+                  width: "15vh",
+                  height: "auto",
+                  margin: "15px auto",
+                  position: "relative"
+                }}
+                src={`${profilePic}`}>
+                {firstLetter(user.firstName)}
+              </Avatar>
               {user.color !== sketchPickerColor ? (
                 <Button
                   variant="contained"
@@ -115,6 +126,7 @@ function SettingsModal(props) {
               item
               xs={6}
               sx={{
+                position: "relative",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -139,7 +151,9 @@ function SettingsModal(props) {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleSave} variant="contained">Save</Button>
+          <Button onClick={handleSave} variant="contained">
+            Save
+          </Button>
         </DialogActions>
       </Dialog>
       <Snackbar

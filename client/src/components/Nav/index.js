@@ -34,7 +34,10 @@ function ElevationScroll(props) {
     threshold: 0,
   });
 
-  if (window.location.pathname === "/contact" || window.location.pathname === "/pricing") {
+  if (
+    window.location.pathname === "/contact" ||
+    window.location.pathname === "/pricing"
+  ) {
     return React.cloneElement(children, {
       elevation: trigger ? 4 : 0,
     });
@@ -258,30 +261,38 @@ const Nav = (props) => {
                   justifyContent: "flex-end",
                   marginRight: "10px",
                 }}>
-                <Button
-                  color="inherit"
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block", transition: "none" }}>
-                  <HashLink to="/#about">About Us</HashLink>
-                </Button>
-                <Button
-                  color="inherit"
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block", transition: "none" }}>
-                  <HashLink to="/#service">Services</HashLink>
-                </Button>
-                <Button
-                  color="inherit"
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block", transition: "none" }}>
-                  <Link to="/pricing">Pricing</Link>
-                </Button>
-                <Button
-                  color="inherit"
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block", transition: "none" }}>
-                  <Link to="/contact">Contact</Link>
-                </Button>
+                <HashLink to="/#about">
+                  <Button
+                    color="inherit"
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: "block", transition: "none" }}>
+                    About Us
+                  </Button>
+                </HashLink>
+                <HashLink to="/#service">
+                  <Button
+                    color="inherit"
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: "block", transition: "none" }}>
+                    Services
+                  </Button>
+                </HashLink>
+                <Link to="/pricing">
+                  <Button
+                    color="inherit"
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: "block", transition: "none" }}>
+                    Pricing
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button
+                    color="inherit"
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: "block", transition: "none" }}>
+                    Contact
+                  </Button>
+                </Link>
                 {showLogin()}
               </Box>
 
