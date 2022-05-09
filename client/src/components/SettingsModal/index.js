@@ -24,8 +24,8 @@ function SettingsModal(props) {
   const [profilePic, setProfilePic] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const { openSettings, setOpenSettings } = props;
-  const { loading, data: userData } = useQuery(QUERY_ME);
-  const [updateUser, { error }] = useMutation(UPDATE_USER);
+  const { data: userData } = useQuery(QUERY_ME);
+  const [updateUser] = useMutation(UPDATE_USER);
   const user = userData?.me;
 
   useEffect(() => {
@@ -105,7 +105,7 @@ function SettingsModal(props) {
                   width: "15vh",
                   height: "auto",
                   margin: "15px auto",
-                  position: "relative"
+                  position: "relative",
                 }}
                 src={`${profilePic}`}>
                 {firstLetter(user.firstName)}
