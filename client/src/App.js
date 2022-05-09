@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
+import NoMatch from "./pages/NoMatch";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -43,6 +44,7 @@ function App() {
             <Route exact path="/contact" element={<Contact />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/pricing" element={<Pricing />} />
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </div>
       </Router>

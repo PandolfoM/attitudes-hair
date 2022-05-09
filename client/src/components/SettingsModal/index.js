@@ -102,10 +102,11 @@ function SettingsModal(props) {
                 alt={`${user.firstName} ${user.lastName}`}
                 sx={{
                   backgroundColor: user.color,
-                  width: "15vh",
-                  height: "auto",
+                  width: "120px",
+                  height: "120px",
                   margin: "15px auto",
                   position: "relative",
+                  boxShadow: "0 0 10px black"
                 }}
                 src={`${profilePic}`}>
                 {firstLetter(user.firstName)}
@@ -137,16 +138,6 @@ function SettingsModal(props) {
                 }}
                 color={sketchPickerColor}
               />
-              <Avatar
-                alt={`${user.firstName} ${user.lastName}`}
-                sx={{
-                  backgroundColor: sketchPickerColor,
-                  height: "100%",
-                  marginLeft: "5px",
-                }}
-                variant="square">
-                {firstLetter(user.firstName)}
-              </Avatar>
             </Grid>
           </Grid>
         </DialogContent>

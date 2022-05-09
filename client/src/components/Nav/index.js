@@ -138,13 +138,13 @@ const Nav = (props) => {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}>
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">
-                <Link to="/dashboard">Dashboard</Link>
-              </Typography>
-            </MenuItem>
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Typography onClick={() => Auth.logout()}>Logout</Typography>
+            <Link to="/dashboard">
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Dashboard</Typography>
+              </MenuItem>
+            </Link>
+            <MenuItem onClick={() => {Auth.logout(); handleCloseUserMenu()}}>
+              <Typography>Logout</Typography>
             </MenuItem>
           </Menu>
         </>
