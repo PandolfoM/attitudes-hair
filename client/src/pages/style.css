@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .contact-content {
@@ -91,4 +91,17 @@
 
 .dashboard-content {
   margin-left: 100px;
+}
+
+/* Pricing */
+
+.priceChart {
+  width: 80%;
+  height: 80%;
+}
+
+@media screen and (max-width: 480px) {
+  .priceChart {
+    width: 100%;
+  }
 }

@@ -21,7 +21,7 @@ function About() {
         <Box sx={{ flexGrow: 1, marginTop: "25px" }}>
           <Grid container spacing={2}>
             <Grid item md={4}>
-              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Category 1</Typography>
+              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Experience</Typography>
               <Typography variant="p" sx={{fontSize: "0.85rem"}}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
@@ -29,7 +29,7 @@ function About() {
               </Typography>
             </Grid>
             <Grid item md={4}>
-              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Category 2</Typography>
+              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Customer Service</Typography>
               <Typography variant="p" sx={{fontSize: "0.85rem"}}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh

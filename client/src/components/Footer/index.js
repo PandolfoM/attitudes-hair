@@ -62,7 +62,7 @@ function Footer() {
               </p>
             </div>
             <div className="right-box">
-              <h3>About the company</h3>
+              <h3>About Attitudes</h3>
               <p style={{ opacity: "0.5", fontWeight: "300" }}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
