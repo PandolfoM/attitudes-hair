@@ -18,18 +18,20 @@ function Contact() {
   const { loading, data } = useQuery(QUERY_PRICES);
   const [pageSize, setPageSize] = useState(40);
 
-  function getExtra(params) {
-    let number = params.row.price.toFixed(2);
+  function formatPrice(params) {
+    return `$${params.row.price.toFixed(2)}`;
+  }
+
+  function formatExtra(params) {
     if (params.row.additional) {
-      return `$${number} *`;
-    } else {
-      return `$${number}`;
+      return `Yes`;
     }
   }
 
   const columns = [
-    { field: "name", headerName: "Item", width: 650 },
-    { field: "price", headerName: "Cost", width: 150, valueGetter: getExtra },
+    { field: "name", headerName: "Item", width: 500 },
+    { field: "price", headerName: "Cost", width: 200, valueGetter: formatPrice },
+    { field: "additional", headerName: "Service Fee *", valueGetter: formatExtra, }
   ];
 
   return (
