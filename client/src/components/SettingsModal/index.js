@@ -101,7 +101,7 @@ function SettingsModal(props) {
               <Avatar
                 alt={`${user.firstName} ${user.lastName}`}
                 sx={{
-                  backgroundColor: user.color,
+                  backgroundColor: sketchPickerColor,
                   width: "120px",
                   height: "120px",
                   margin: "15px auto",
