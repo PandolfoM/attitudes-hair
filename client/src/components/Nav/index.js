@@ -186,7 +186,7 @@ const Nav = (props) => {
                   display: { xs: "none", md: "flex", cursor: "pointer", alignItems: "center" },
                 }}>
                   
-                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "50px"}}/></Link>
+                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "7vh"}}/></Link>
               </Typography>
 
               <Typography
@@ -198,7 +198,7 @@ const Nav = (props) => {
                   flexGrow: 1,
                   display: { xs: "flex", md: "none", cursor: "pointer" },
                 }}>
-                <Link to="/">Attitudes Hair Design</Link>
+                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "5vh", margin: "auto"}}/></Link>
               </Typography>
 
               <Box
