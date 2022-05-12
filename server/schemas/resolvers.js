@@ -31,14 +31,14 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args, context) => {
-      // if (context.user) {
+      if (context.user) {
         const user = await User.create(args);
         const token = signToken(user);
 
         return { token, user };
-      // }
+      }
 
-      // throw new AuthenticationError("Not Logged In");
+      throw new AuthenticationError("Not Logged In");
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
