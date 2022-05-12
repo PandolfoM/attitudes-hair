@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SketchPicker } from "react-color";
+import { ChromePicker } from "react-color";
 import {
   Alert,
   Avatar,
@@ -20,7 +20,7 @@ import { firstLetter } from "../../utils/helpers";
 import { UPDATE_USER } from "../../utils/mutations";
 
 function SettingsModal(props) {
-  const [sketchPickerColor, setSketchPickerColor] = useState("#bdbdbd");
+  const [ChromePickerColor, setChromePickerColor] = useState("#bdbdbd");
   const [profilePic, setProfilePic] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
   const { openSettings, setOpenSettings } = props;
@@ -29,7 +29,7 @@ function SettingsModal(props) {
   const user = userData?.me;
 
   useEffect(() => {
-    setSketchPickerColor(user.color);
+    setChromePickerColor(user.color);
   }, [user.color]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function SettingsModal(props) {
   const handleSave = async () => {
     try {
       await updateUser({
-        variables: { color: sketchPickerColor, pfp: profilePic },
+        variables: { color: ChromePickerColor, pfp: profilePic },
       });
 
       setOpenAlert(true);
@@ -57,7 +57,7 @@ function SettingsModal(props) {
   };
 
   const handleColorReset = async () => {
-    setSketchPickerColor(user.color);
+    setChromePickerColor(user.color);
   };
 
   const handleChange = (event) => {
@@ -101,7 +101,7 @@ function SettingsModal(props) {
               <Avatar
                 alt={`${user.firstName} ${user.lastName}`}
                 sx={{
-                  backgroundColor: sketchPickerColor,
+                  backgroundColor: ChromePickerColor,
                   width: "120px",
                   height: "120px",
                   margin: "15px auto",
@@ -111,7 +111,7 @@ function SettingsModal(props) {
                 src={`${profilePic}`}>
                 {firstLetter(user.firstName)}
               </Avatar>
-              {user.color !== sketchPickerColor ? (
+              {user.color !== ChromePickerColor ? (
                 <Button
                   variant="contained"
                   color="error"
@@ -132,11 +132,11 @@ function SettingsModal(props) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              <SketchPicker
+              <ChromePicker
                 onChange={(color) => {
-                  setSketchPickerColor(color.hex);
+                  setChromePickerColor(color.hex);
                 }}
-                color={sketchPickerColor}
+                color={ChromePickerColor}
               />
             </Grid>
           </Grid>
