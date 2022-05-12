@@ -8,13 +8,13 @@ const db = require('./config/connection')
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
 
-const PORT = process.env.PORT || 3001;
 
 require("dotenv").config();
 
 startApolloServer(typeDefs, resolvers);
 
 async function startApolloServer(typeDefs, resolvers) {
+  const PORT = process.env.PORT || 3001;
   const app = express();
   const httpServer = http.createServer(app);
 
