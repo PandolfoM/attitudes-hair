@@ -26,6 +26,7 @@ import {
   Zoom,
 } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import logo from "../../assets/attitudes.svg"
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -174,7 +175,7 @@ const Nav = (props) => {
           id="navbar"
           color="nav">
           <Container maxWidth="xl">
-            <Toolbar disableGutters>
+            <Toolbar disableGutters sx={{alignItems: "center"}}>
               <Typography
                 variant="h6"
                 noWrap
@@ -182,9 +183,10 @@ const Nav = (props) => {
                 onClick={handleCloseNavMenu}
                 sx={{
                   mr: 2,
-                  display: { xs: "none", md: "flex", cursor: "pointer" },
+                  display: { xs: "none", md: "flex", cursor: "pointer", alignItems: "center" },
                 }}>
-                <Link to="/">Attitudes Hair Design</Link>
+                  
+                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "50px"}}/></Link>
               </Typography>
 
               <Typography

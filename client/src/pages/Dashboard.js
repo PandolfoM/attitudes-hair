@@ -23,6 +23,7 @@ import { firstLetter } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import Users from "../components/Users";
 import Prices from "../components/Prices";
+import logo from "../assets/attitudes.svg"
 
 function Dashboard() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -73,6 +74,7 @@ function Dashboard() {
     <>
       <div className="sidebar">
         <ul className="nav-list">
+          <img src={logo} alt="Attitudes Hair Design Studio" style={{width: "90%", height: "auto", margin:"0 auto"}}/>
           <Tabs value={value} orientation="vertical" onChange={handleChange}>
             <Tooltip title="Users" placement="right" arrow>
               <Tab label={<PersonIcon />} {...a11yProps(0)} />

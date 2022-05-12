@@ -1,0 +1,46 @@
+<svg id="Design_3" data-name="Design 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        stroke: #173753;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+        filter: url(#filter);
+      }
+
+      .cls-2 {
+        font-size: 75px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        text-anchor: middle;
+        font-family: Allura;
+      }
+
+      .cls-3 {
+        font-size: 33.333px;
+      }
+
+      .cls-4 {
+        font-size: 16.667px;
+        fill: #24a2d0;
+      }
+    </style>
+    <filter id="filter" x="20.656" y="20.656" width="158.688" height="158.688" filterUnits="userSpaceOnUse">
+      <feFlood result="flood" flood-color="#212121"/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g style="fill: #fff; filter: url(#filter)">
+    <circle id="circle" class="cls-1" cx="100" cy="100" r="79.344" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#circle" style="stroke: #173753; filter: none; fill: none"/>
+  <text id="A" class="cls-2" transform="matrix(2.125, -0.975, 0.975, 2.125, 87.42, 132.312)"><tspan x="0">A</tspan></text>
+  <text id="ttitudes" class="cls-3" x="126.333" y="131.333"><tspan x="126.333">ttitudes</tspan></text>
+  <text id="Hair_Design" data-name="Hair Design" class="cls-4" x="118" y="145.333"><tspan x="118">Hair Design</tspan></text>
+</svg>

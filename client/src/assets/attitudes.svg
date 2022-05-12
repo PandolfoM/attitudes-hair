@@ -1,0 +1,31 @@
+<svg id="Design_1" data-name="Design 1" xmlns="http://www.w3.org/2000/svg" width="200" height="85" viewBox="0 57.5 200 85">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #24a2d0;
+        stroke-width: 1px;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 20.833px;
+        fill: #24a2d0;
+        font-family: "Baskerville Old Face";
+      }
+
+      .cls-2, .cls-3 {
+        text-anchor: middle;
+      }
+
+      .cls-3 {
+        font-size: 41.667px;
+        fill: #fff;
+        font-family: "Laughing and Smiling";
+      }
+    </style>
+  </defs>
+  <path id="Line_1" data-name="Line 1" class="cls-1" d="M4.534,131.6v-1.067H42.96V131.6H4.534Z"/>
+  <path id="Line_1-2" data-name="Line 1" class="cls-1" d="M157.534,131.6v-1.067H195.96V131.6H157.534Z"/>
+  <text id="Hair_Design_Text" data-name="Hair Design Text" class="cls-2" x="98" y="135.75"><tspan x="98">Hair Design</tspan></text>
+  <text id="Attitudes_Text" data-name="Attitudes Text" class="cls-3" x="97.75" y="99.75"><tspan x="97.75">Attitudes</tspan></text>
+</svg>
