@@ -74,7 +74,7 @@ function Dashboard() {
     <>
       <div className="sidebar">
         <ul className="nav-list">
-          <img src={logo} alt="Attitudes Hair Design Studio" style={{width: "90%", height: "auto", margin:"0 auto"}}/>
+          <img src={logo} alt="Attitudes Hair Design Studio" style={{width: "90%", height: "auto", margin:"0 auto 15px auto"}}/>
           <Tabs value={value} orientation="vertical" onChange={handleChange}>
             <Tooltip title="Users" placement="right" arrow>
               <Tab label={<PersonIcon />} {...a11yProps(0)} />

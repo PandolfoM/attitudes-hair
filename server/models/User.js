@@ -26,6 +26,7 @@ const userSchema = new Schema({
   },
   color: {
     type: String,
+    default: "",
   },
   pfp: {
     type: String,
