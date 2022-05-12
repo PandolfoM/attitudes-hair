@@ -10,20 +10,13 @@ import SellIcon from "@mui/icons-material/Sell";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import {
-  Avatar,
-  Button,
-  IconButton,
-  Tab,
-  Tabs,
-  Tooltip,
-} from "@mui/material";
+import { Avatar, Button, IconButton, Tab, Tabs, Tooltip } from "@mui/material";
 import SettingsModal from "../components/SettingsModal";
 import { firstLetter } from "../utils/helpers";
 import { Link } from "react-router-dom";
 import Users from "../components/Users";
 import Prices from "../components/Prices";
-import logo from "../assets/attitudes.svg"
+import logo from "../assets/attitudes.svg";
 
 function Dashboard() {
   const [openSettings, setOpenSettings] = useState(false);
@@ -74,7 +67,11 @@ function Dashboard() {
     <>
       <div className="sidebar">
         <ul className="nav-list">
-          <img src={logo} alt="Attitudes Hair Design Studio" style={{width: "90%", height: "auto", margin:"0 auto 15px auto"}}/>
+          <img
+            src={logo}
+            alt="Attitudes Hair Design Studio"
+            style={{ width: "90%", height: "auto", margin: "0 auto 15px auto" }}
+          />
           <Tabs value={value} orientation="vertical" onChange={handleChange}>
             <Tooltip title="Users" placement="right" arrow>
               <Tab label={<PersonIcon />} {...a11yProps(0)} />
@@ -99,12 +96,19 @@ function Dashboard() {
                 title={`${user.firstName} ${user.lastName}`}
                 placement="right"
                 arrow>
-                <Avatar
-                  alt={`${user.firstName} ${user.lastName}`}
-                  sx={{ backgroundColor: user.color }}
-                  src={`${user.pfp}`}>
-                  {firstLetter(user.firstName)}
-                </Avatar>
+                {user.pfp ? (
+                  <Avatar
+                    alt={`${user.firstName} ${user.lastName}`}
+                    src={`${user.pfp}`}>
+                    {firstLetter(user.firstName)}
+                  </Avatar>
+                ) : (
+                  <Avatar
+                    alt={`${user.firstName} ${user.lastName}`}
+                    sx={{ backgroundColor: user.color }}>
+                    {firstLetter(user.firstName)}
+                  </Avatar>
+                )}
               </Tooltip>
             </div>
           </li>

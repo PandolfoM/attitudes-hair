@@ -26,7 +26,7 @@ import {
   Zoom,
 } from "@mui/material";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import logo from "../../assets/attitudes.svg"
+import logo from "../../assets/attitudes.svg";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -115,12 +115,19 @@ const Nav = (props) => {
           ) : (
             <Tooltip title={`${userData.me.firstName} ${userData.me.lastName}`}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt={`${userData.me.firstName} ${userData.me.lastName}`}
-                  sx={{ backgroundColor: userData.me.color }}
-                  src={`${userData.me.pfp}`}>
-                  {firstLetter(userData.me.firstName)}
-                </Avatar>
+                {userData.me.pfp ? (
+                  <Avatar
+                    alt={`${userData.me.firstName} ${userData.me.lastName}`}
+                    src={`${userData.me.pfp}`}>
+                    {firstLetter(userData.me.firstName)}
+                  </Avatar>
+                ) : (
+                  <Avatar
+                    alt={`${userData.me.firstName} ${userData.me.lastName}`}
+                    sx={{ backgroundColor: userData.me.color }}>
+                    {firstLetter(userData.me.firstName)}
+                  </Avatar>
+                )}
               </IconButton>
             </Tooltip>
           )}
@@ -144,7 +151,11 @@ const Nav = (props) => {
                 <Typography textAlign="center">Dashboard</Typography>
               </MenuItem>
             </Link>
-            <MenuItem onClick={() => {Auth.logout(); handleCloseUserMenu()}}>
+            <MenuItem
+              onClick={() => {
+                Auth.logout();
+                handleCloseUserMenu();
+              }}>
               <Typography>Logout</Typography>
             </MenuItem>
           </Menu>
@@ -175,7 +186,7 @@ const Nav = (props) => {
           id="navbar"
           color="nav">
           <Container maxWidth="xl">
-            <Toolbar disableGutters sx={{alignItems: "center"}}>
+            <Toolbar disableGutters sx={{ alignItems: "center" }}>
               <Typography
                 variant="h6"
                 noWrap
@@ -183,10 +194,20 @@ const Nav = (props) => {
                 onClick={handleCloseNavMenu}
                 sx={{
                   mr: 2,
-                  display: { xs: "none", md: "flex", cursor: "pointer", alignItems: "center" },
+                  display: {
+                    xs: "none",
+                    md: "flex",
+                    cursor: "pointer",
+                    alignItems: "center",
+                  },
                 }}>
-                  
-                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "7vh"}}/></Link>
+                <Link to="/">
+                  <img
+                    src={logo}
+                    alt="Attitudes Hair Design"
+                    style={{ height: "7vh" }}
+                  />
+                </Link>
               </Typography>
 
               <Typography
@@ -198,7 +219,13 @@ const Nav = (props) => {
                   flexGrow: 1,
                   display: { xs: "flex", md: "none", cursor: "pointer" },
                 }}>
-                <Link to="/"><img src={logo} alt="Attitudes Hair Design" style={{height: "5vh", margin: "auto"}}/></Link>
+                <Link to="/">
+                  <img
+                    src={logo}
+                    alt="Attitudes Hair Design"
+                    style={{ height: "5vh", margin: "auto" }}
+                  />
+                </Link>
               </Typography>
 
               <Box
