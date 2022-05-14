@@ -121,7 +121,7 @@ const Nav = (props) => {
             </Tooltip>
           )}
           <Menu
-            sx={{ mt: "45px" }}
+            sx={{ mt: "45px", overflow: "hidden" }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{

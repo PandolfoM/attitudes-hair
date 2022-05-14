@@ -42,7 +42,6 @@ function Dashboard() {
     } else {
       setDarkMode(false)
     }
-    console.log(DarkMode);
   }, [DarkMode])
 
   const darkTheme = createTheme({
