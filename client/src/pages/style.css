@@ -44,7 +44,6 @@
 
 .sidebar .profile-details svg {
   color: white;
-  width: 70%;
   height: auto;
 }
 
@@ -69,11 +68,15 @@
 
 .sidebar li.profile{
   position: fixed;
-  width: 50px;
+  width: 80px;
   left: 0;
   bottom: 0px;
   padding: 10px 14px;
   overflow: hidden;
+}
+
+.css-1drgtl0-MuiButtonBase-root-MuiIconButton-root:hover {
+  background-color: transparent !important;
 }
 
 .sidebar .logo-details{
@@ -82,11 +85,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.sidebar .logo-details .dashboard{
-  color: #fff;
-  font-weight: 600;
 }
 
 .dashboard-content {
@@ -105,3 +103,15 @@
     width: 100%;
   }
 }
+
+/* Settings Modal */
+.css-mwi9v-MuiAvatar-root {
+  margin: auto !important;
+}
+
+ @media screen and (max-width: 621px) {
+   .chrome-picker {
+     width: 80% !important;
+     height: auto !important;
+   }
+ }
