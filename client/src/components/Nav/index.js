@@ -59,18 +59,7 @@ function ScrollTop(props) {
   });
 
   const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      ".hero"
-    );
-
-    if (anchor) {
-      anchor.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    } else {
-      return;
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
