@@ -105,13 +105,12 @@
 }
 
 /* Settings Modal */
-.css-mwi9v-MuiAvatar-root {
-  margin: auto !important;
-}
 
- @media screen and (max-width: 621px) {
-   .chrome-picker {
-     width: 80% !important;
-     height: auto !important;
-   }
+@media screen and (max-width: 621px) {
+  .chrome-picker {
+    width: 80% !important;
+  }
+  .css-mwi9v-MuiAvatar-root {
+    margin: auto !important;
+  }
  }
