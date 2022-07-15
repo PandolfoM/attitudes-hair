@@ -37,7 +37,7 @@ function About() {
               </Typography>
             </Grid>
             <Grid item md={4}>
-              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Category 3</Typography>
+              <Typography variant="h5" sx={{fontWeight: "500", marginBottom: "10px"}}>Quality</Typography>
               <Typography variant="p" sx={{fontSize: "0.85rem"}}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
