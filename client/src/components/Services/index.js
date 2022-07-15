@@ -2,6 +2,9 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useTheme } from "@mui/material/styles";
 import "./style.css";
+import Cleaning from "../../assets/cleaning.jpg"
+import Cutting from "../../assets/cutting.jpg"
+import Waxing from "../../assets/waxing.jpg"
 
 function Services() {
   const theme = useTheme();
@@ -24,7 +27,7 @@ function Services() {
             <Grid item xs={9} md={3} className="img-container">
               <img
                 className="service-img waxing-img"
-                src="https://www.annahealthandbeauty.com/wp-content/uploads/2017/07/eyebrowwaxing.jpg"
+                src={Waxing}
                 alt="waxing service"></img>
               <Typography className="text-img" variant="h6">
                 Waxing
@@ -33,7 +36,7 @@ function Services() {
             <Grid item xs={9} md={3} className="img-container">
               <img
                 className="service-img hair-img"
-                src="https://th.bing.com/th/id/R.13ba8f4b061e805db63b2fbbd6e8be95?rik=Qgx%2fSj6JIX7w7w&riu=http%3a%2f%2fthewowstyle.com%2fwp-content%2fuploads%2f2018%2f11%2fHair-Treatment.jpg&ehk=doEPmC5MLq8ygH%2bDkG9Le05sm1RGHQSLXVA99c27OJ8%3d&risl=&pid=ImgRaw&r=0"
+                src={Cleaning}
                 alt="hair treatment"></img>
               <Typography className="text-img" variant="h6">
                 Hair Treatment
@@ -42,7 +45,7 @@ function Services() {
             <Grid item xs={9} md={3} className="img-container">
               <img
                 className="service-img cut-img"
-                src="https://th.bing.com/th/id/R.1096b8edff38e5e1e7e84df7601ef488?rik=k7IZv92H3m7BpA&riu=http%3a%2f%2fghk.h-cdn.co%2fassets%2f15%2f32%2f1438880150-hair-cut-1.jpg&ehk=bK22evWuz26qLt2tAgAeZTeA0dU98GGrlmAunYoKZi8%3d&risl=&pid=ImgRaw&r=0"
+                src={Cutting}
                 alt="hair cuts"></img>
               <Typography className="text-img" variant="h6">
                 Hair Cuts

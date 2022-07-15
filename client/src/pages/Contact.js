@@ -19,8 +19,8 @@ function Contact() {
             <div className="left-contact ">
               <Stack spacing={2}>
                 <h2 style={{ marginTop: "0px" }}>Contact</h2>
-                <p>Phone Number: (860) 747 8044</p>
-                <p>Email Address: tina@pandolfo.com</p>
+                <p>Phone Number: <a href="tel:8609783147">(860) 978-3147</a></p>
+                <p>Email Address: <a href="mailto:tina@pandolfo.com">tina@pandolfo.com</a></p>
               </Stack>
               <Stack spacing={2}>
                 <h2>Hours</h2>
