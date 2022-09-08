@@ -143,7 +143,7 @@ function EditItem() {
       ) : (
         <CircularProgress />
       )}
-      <Button variant="contained" onClick={handleFormSubmit} fullWidth>
+      <Button variant="contained" onClick={handleFormSubmit} fullWidth >
         Save
       </Button>
     </>

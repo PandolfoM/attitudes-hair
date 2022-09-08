@@ -59,20 +59,14 @@ function Prices() {
             <EditItem />
           </Box>
         </Paper>
-        <Box
-          sx={{
-            width: "500px",
-            margin: "10px",
-            height: "auto",
-            textAlign: "center",
-          }}>
-          <Button
-            variant="contained"
-            onClick={handleRefetch}
-            sx={{ width: "100%" }}>
-            Refresh
-          </Button>
-        </Box>
+      </Box>
+      <Box
+        sx={{
+          textAlign: "center",
+        }}>
+        <Button variant="contained" onClick={handleRefetch}>
+          Refresh
+        </Button>
       </Box>
     </Box>
   );
